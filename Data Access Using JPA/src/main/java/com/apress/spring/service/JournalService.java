@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +31,13 @@ public class JournalService {
     }
 
     public List<Journal> findAll(){
-        return repo.findAll();
+        List<Journal> list = new ArrayList<>();
+        repo.findAll().forEach(journal -> list.add(journal));
+        return list;
+    }
+
+    public void deleteCustomJournal(String title){
+        repo.deleteJournalByTitleContains(title);
     }
 
     public List<Journal> findByCustomQuery(String word){

@@ -3,6 +3,7 @@ package com.apress.spring.domain;
 import org.hibernate.annotations.Generated;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,11 +12,15 @@ import java.util.Date;
  * Created by ihhe0417 on 4/26/2017.
  */
 @Entity
-public class Journal {
+@Table(name = "journal")
+public class Journal implements Serializable {
+
+    private static final long serialVersionUID = 9034349917685748867L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String title;
     private Date created;
     private String summary;

@@ -25,7 +25,9 @@ public class SimpleJpaAppApplication {
 			log.info("#### > Finding all entities");
 			service.findAll().forEach(journal -> log.info(journal.toString()));
 			log.info("#### > Custom query...");
-			service.findByCustomQuery("Get").forEach(journal -> log.info(journal.toString()));
+			service.findByCustomQuery("Simple").forEach(journal -> log.info(journal.toString()));
+			log.info("#### > Deleting custom journal...");
+			service.deleteCustomJournal("Simple");
 		};
 	}
 }
