@@ -40,6 +40,10 @@ public class JournalService {
         repo.deleteJournalByTitleContains(title);
     }
 
+    public void deleteAll(){
+        repo.deleteAll();
+    }
+
     public List<Journal> findByCustomQuery(String word){
         return repo.findByCustomQuery(word);
     }

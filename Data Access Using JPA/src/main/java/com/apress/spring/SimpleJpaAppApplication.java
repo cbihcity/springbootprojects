@@ -14,7 +14,10 @@ public class SimpleJpaAppApplication {
 	private static final Logger log = LoggerFactory.getLogger(SimpleJpaAppApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(SimpleJpaAppApplication.class, args);
+		SpringApplication app = new SpringApplication(SimpleJpaAppApplication.class);
+		app.setWebEnvironment(false);
+		app.run(args);
+//		SpringApplication.run(SimpleJpaAppApplication.class, args);
 	}
 
 	@Bean
@@ -28,6 +31,7 @@ public class SimpleJpaAppApplication {
 			service.findByCustomQuery("Simple").forEach(journal -> log.info(journal.toString()));
 			log.info("#### > Deleting custom journal...");
 			service.deleteCustomJournal("Simple");
+			service.deleteAll();
 		};
 	}
 }
