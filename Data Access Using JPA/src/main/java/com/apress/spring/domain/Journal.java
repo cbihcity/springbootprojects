@@ -25,6 +25,18 @@ public class Journal implements Serializable {
     private Date created;
     private String summary;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_course")
+    private Title titlet;
+
+    public Title getTitlet() {
+        return titlet;
+    }
+
+    public void setTitlet(Title titlet) {
+        this.titlet = titlet;
+    }
+
     @Transient
     private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 

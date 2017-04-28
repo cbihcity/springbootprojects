@@ -25,13 +25,13 @@ public class SimpleJpaAppApplication {
 		return args -> {
 			log.info("#### > Inserting data...");
 			service.insertData();
-			log.info("#### > Finding all entities");
-			service.findAll().forEach(journal -> log.info(journal.toString()));
-			log.info("#### > Custom query...");
-			service.findByCustomQuery("Simple").forEach(journal -> log.info(journal.toString()));
-			log.info("#### > Deleting custom journal...");
-			service.deleteCustomJournal("Simple");
-			service.deleteAll();
+//			log.info("#### > Finding all entities");
+//			service.findAll().forEach(journal -> log.info(journal.toString()));
+//			log.info("#### > Custom query...");
+//			service.findByCustomQuery("Simple").forEach(journal -> log.info(journal.toString()));
+//			log.info("#### > Deleting custom journal...");
+//			service.deleteCustomJournal("Simple");
+//			service.deleteAll();
 		};
 	}
 }

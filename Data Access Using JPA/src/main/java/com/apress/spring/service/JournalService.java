@@ -1,6 +1,7 @@
 package com.apress.spring.service;
 
 import com.apress.spring.domain.Journal;
+import com.apress.spring.domain.Title;
 import com.apress.spring.repository.JournalRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,28 +24,33 @@ public class JournalService {
     JournalRepository repo;
     public void insertData() throws ParseException {
         log.info("### > Inserting Data...");
-        repo.save(new Journal("Get to know Spring Boot","Today I will learn Spring Boot","01/01/2016"));
-        repo.save(new Journal("Simple Spring Boot Project","I will do my first Spring Boot Project","01/02/2016"));
-        repo.save(new Journal("Spring Boot Reading","Read more about Spring Boot","02/01/2016"));
-        repo.save(new Journal("Spring Boot in the Cloud","Spring Boot using Cloud Foundry","03/01/2016"));
+        Title title = new Title();
+        Journal j1 = new Journal("Get to know Spring Boot","Today I will learn Spring Boot","01/01/2016");
+        Journal j2 = new Journal("Simple Spring Boot Project","I will do my first Spring Boot Project","01/02/2016");
+        j2.setTitlet(title);
+        j1.setTitlet(title);
+
+        title.getList().add(j1);
+        title.getList().add(j2);
+        repo.save(title);
         log.info("> Done.");
     }
 
-    public List<Journal> findAll(){
-        List<Journal> list = new ArrayList<>();
-        repo.findAll().forEach(journal -> list.add(journal));
-        return list;
-    }
+//    public List<Journal> findAll(){
+//        List<Journal> list = new ArrayList<>();
+//        repo.findAll().forEach(journal -> list.add(journal));
+//        return list;
+//    }
 
-    public void deleteCustomJournal(String title){
-        repo.deleteJournalByTitleContains(title);
-    }
-
-    public void deleteAll(){
-        repo.deleteAll();
-    }
-
-    public List<Journal> findByCustomQuery(String word){
-        return repo.findByCustomQuery(word);
-    }
+//    public void deleteCustomJournal(String title){
+//        repo.deleteJournalByTitleContains(title);
+//    }
+//
+//    public void deleteAll(){
+//        repo.deleteAll();
+//    }
+//
+//    public List<Journal> findByCustomQuery(String word){
+//        return repo.findByCustomQuery(word);
+//    }
 }
