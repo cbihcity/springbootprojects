@@ -25,15 +25,15 @@ public class JournalService {
     public void insertData() throws ParseException {
         log.info("### > Inserting Data...");
         Title title = new Title();
-        Journal j1 = new Journal("Get to know Spring Boot","Today I will learn Spring Boot","01/01/2016");
-        Journal j2 = new Journal("Simple Spring Boot Project","I will do my first Spring Boot Project","01/02/2016");
+//        Journal j1 = new Journal("Get to know Spring Boot","Today I will learn Spring Boot","01/01/2016");
+//        Journal j2 = new Journal("Simple Spring Boot Project","I will do my first Spring Boot Project","01/02/2016");
         j2.setTitlet(title);
         j1.setTitlet(title);
 
         title.getList().add(j1);
         title.getList().add(j2);
         repo.save(title);
-        log.info("> Done.");
+//        log.info("> Done.");
     }
 
 //    public List<Journal> findAll(){
