@@ -30,8 +30,8 @@ public class JournalService {
         j2.setTitlet(title);
         j1.setTitlet(title);
 
-        title.getList().add(j1);
-        title.getList().add(j2);
+//        title.getList().add(j1);
+//        title.getList().add(j2);
         repo.save(title);
         log.info("> Done.");
     }
