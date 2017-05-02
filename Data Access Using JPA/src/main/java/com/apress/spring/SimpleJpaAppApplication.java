@@ -15,7 +15,7 @@ public class SimpleJpaAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(SimpleJpaAppApplication.class);
-		app.setWebEnvironment(false);
+		app.setWebEnvironment(true);
 		app.run(args);
 //		SpringApplication.run(SimpleJpaAppApplication.class, args);
 	}
