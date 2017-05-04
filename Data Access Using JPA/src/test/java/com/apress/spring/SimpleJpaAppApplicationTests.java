@@ -14,8 +14,8 @@ public class SimpleJpaAppApplicationTests {
     @Autowired
     JournalService service;
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }

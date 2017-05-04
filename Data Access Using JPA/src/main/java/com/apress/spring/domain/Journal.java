@@ -1,5 +1,6 @@
 package com.apress.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Generated;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class Journal implements Serializable {
     private Date created;
     private String summary;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_course")
     private Title titlet;
@@ -81,21 +83,31 @@ public class Journal implements Serializable {
         this.summary = summary;
     }
 
-    public String getCreatedAsShort(){
+    public String getCreatedAsShort() {
         return format.format(created);
     }
 
-    public String toString(){
-        StringBuilder value = new StringBuilder("* JournalEntry(");
-        value.append("Id: ");
-        value.append(id);
-        value.append(",Title: ");
-        value.append(title);
-        value.append(",Summary: ");
-        value.append(summary);
-        value.append(",Created: ");
-        value.append(getCreatedAsShort());
-        value.append(")");
-        return value.toString();
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Journal journal = (Journal) o;
+
+        if (id != null ? !id.equals(journal.id) : journal.id != null) return false;
+        if (title != null ? !title.equals(journal.title) : journal.title != null) return false;
+        if (created != null ? !created.equals(journal.created) : journal.created != null) return false;
+        return summary != null ? summary.equals(journal.summary) : journal.summary == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (created != null ? created.hashCode() : 0);
+        result = 31 * result + (summary != null ? summary.hashCode() : 0);
+        return result;
     }
 }

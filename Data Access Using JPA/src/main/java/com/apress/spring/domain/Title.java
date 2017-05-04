@@ -49,19 +49,18 @@ public class Title {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Title)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Title title = (Title) o;
 
-        if (getId_course() != null ? !getId_course().equals(title.getId_course()) : title.getId_course() != null)
-            return false;
-        return getCourse() != null ? getCourse().equals(title.getCourse()) : title.getCourse() == null;
+        if (id != null ? !id.equals(title.id) : title.id != null) return false;
+        return course != null ? course.equals(title.course) : title.course == null;
     }
 
     @Override
     public int hashCode() {
-        int result = getId_course() != null ? getId_course().hashCode() : 0;
-        result = 31 * result + (getCourse() != null ? getCourse().hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (course != null ? course.hashCode() : 0);
         return result;
     }
 }

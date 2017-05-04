@@ -3,6 +3,7 @@ package com.apress.spring.service;
 import com.apress.spring.domain.Journal;
 import com.apress.spring.domain.Title;
 import com.apress.spring.repository.JournalRepository;
+import com.apress.spring.repository.TitleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class JournalService {
 
     @Autowired
     JournalRepository repo;
+
+    @Autowired
+    TitleRepository titelrepo;
+
     public void insertData() throws ParseException {
         log.info("### > Inserting Data...");
         Title title = new Title();
@@ -32,15 +37,15 @@ public class JournalService {
 
         title.getList().add(j1);
         title.getList().add(j2);
-        repo.save(title);
+        titelrepo.save(title);
         log.info("> Done.");
     }
 
-//    public List<Journal> findAll(){
-//        List<Journal> list = new ArrayList<>();
-//        repo.findAll().forEach(journal -> list.add(journal));
-//        return list;
-//    }
+    public List<Journal> findAll(){
+        List<Journal> list = new ArrayList<>();
+        repo.findAll().forEach(journal -> list.add(journal));
+        return list;
+    }
 
 //    public void deleteCustomJournal(String title){
 //        repo.deleteJournalByTitleContains(title);

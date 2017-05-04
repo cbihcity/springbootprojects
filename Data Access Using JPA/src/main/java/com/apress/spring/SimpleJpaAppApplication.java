@@ -11,20 +11,20 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SimpleJpaAppApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(SimpleJpaAppApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(SimpleJpaAppApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication app = new SpringApplication(SimpleJpaAppApplication.class);
-		app.setWebEnvironment(true);
-		app.run(args);
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(SimpleJpaAppApplication.class);
+        app.setWebEnvironment(true);
+        app.run(args);
 //		SpringApplication.run(SimpleJpaAppApplication.class, args);
-	}
+    }
 
-	@Bean
-	CommandLineRunner runner(JournalService service){
-		return args -> {
-			log.info("#### > Inserting data...");
-			service.insertData();
+    @Bean
+    CommandLineRunner runner(JournalService service) {
+        return args -> {
+            log.info("#### > Inserting data...");
+            service.insertData();
 //			log.info("#### > Finding all entities");
 //			service.findAll().forEach(journal -> log.info(journal.toString()));
 //			log.info("#### > Custom query...");
@@ -32,6 +32,6 @@ public class SimpleJpaAppApplication {
 //			log.info("#### > Deleting custom journal...");
 //			service.deleteCustomJournal("Simple");
 //			service.deleteAll();
-		};
-	}
+        };
+    }
 }

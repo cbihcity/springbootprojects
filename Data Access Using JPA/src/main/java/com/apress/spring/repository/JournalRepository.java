@@ -13,5 +13,6 @@ import java.util.List;
 /**
  * Created by ihhe0417 on 4/26/2017.
  */
-public interface JournalRepository extends CrudRepository<Title, Long> {
+public interface JournalRepository extends CrudRepository<Journal, Long> {
+
 }
